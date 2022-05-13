@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="/keys.js"></script>
+    <title>Homepage</title>
+    
+    <link rel="stylesheet" type="text/css" href="style1.css">
+    
+</head>
+
+<body>
+    <!-- CONTAINERS COVER -->
+    <section class="containers-cover">
+
+        <!-- HEADER -->
+        <header class="header-logo">
+            <h1>FindLost_Pet</h1>
+        </header>
+
+        <!-- NAVIGATION BAR CONTAINER -->
+        <nav class="navigation-con">
+            <section></section>
+      
+            <!--empty left side nav section -->
+            <section><a href="index.html">Home</a></section>
+            <section><a href="./form.html">Veiw Animal Details</a></section>
+            <!-- <section><a href="/reportfound">Report Found Pet</a></section> -->
+            <section><a href="./reportID.html">Search a Animal Details using ID</a></section>
+            <!-- <section><a href="/viewfound">View Found Pets</a></section> -->
+
+            <section></section>
+            <!--empty right side nav section -->
+
+        </nav>
+
+        <!-- ADS CONTAINER -->
+        <section class="con-ads">
+            <section class="mission">
+                <h1>The Aim</h1>
+                <p>A website where you can find and report about lost pet</p>
+                <h1>How It work</h1>
+                <p>
+                    1. You can find the details of all lost pet in "Lost pet page". <br>
+                    2. You can also update the information about the already lost pet.<br>
+                    3. You can give your request about your Pet.<br>
+                    4. If you want to find the details of a specific animal, you can find 
+                    <br> This using their ID number.
+                </p>
+            </section>
+            <!--slideshow.js app running inside this container-->
+            <section class="diplay-imgs"></section>
+        </section>
+
+
+        <!--  CONTENT CONTAINER - THE MAP APP GOES HERE -->
+        <section class="con-content" id="map" style="width: 100%; height: 530px;">
+            
+        </section>
+
+       
+
+        <!-- FOOTER CONTAINER -->
+        <section class="con-footer">
+            <h3> FindLost_Pet &copy; 2022 </h3>
+        </section>
+
+    </section>
+
+    <!--Farkhod added slideshow.js app-->
+    <script src="../../slideshow.js"></script>
+
+  
+    <script src="/homeLogic.js"></script>
+    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
+    <script src="https://unpkg.com/leaflet.markercluster@1.0.6/dist/leaflet.markercluster.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.0.6/dist/MarkerCluster.css"/>
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.0.6/dist/MarkerCluster.Default.css"/>
+    <script type="text/javascript" src="/map.js"></script>
+</body>
+
+</html>
+
