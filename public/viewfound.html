@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View Found</title>
+    <link rel = "stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style1.css">
+    <link rel="stylesheet" type="text/css" href="viewstyle.css">
+</head>
+
+<body>
+    <!-- WRAPPER OF ALL CONTAINERS -->
+    <section class="wrapper-containers">
+
+        <!-- HEADER -->
+        <header class="header-logo">
+            <h1>FindLost_Pet</h1>
+        </header>
+
+        <!-- NAVIGATION BAR CONTAINER -->
+        <nav class="navigation-con">
+            <section></section>
+
+            <!--empty left side nav section -->
+            <section><a href="index.html">Home</a></section>
+            <section><a href="./viewfound.html">Veiw Animal Details</a></section>
+            <section><a href="./form.html">Search a Animal Details using ID</a></section>
+
+            <section></section>
+            <!--empty right side nav section -->
+
+        </nav>
+
+
+        <!--  CONTENT CONTAINER - THE DYNAMIC DATA  GOES HERE -->
+        <section id="view-container">
+
+        </section>
+
+
+    </section>
+    <form action="/all" method="GET">
+        <fieldset>
+            <h3>Click here to view the details of all missing pet</h3>
+           
+            <button type="submit">Submit</button>
+            <br><br><br>
+        </fieldset>
+    </form>
+
+
+    <form action="/reports" method="POST">
+        <fieldset>
+            <h3>Enter the Details of lost pet</h3>
+            <label>Animal ID</label>
+            <input type="text" id='empID' name="id" placeholder="1,2,3..." required>
+            <br><br>
+
+            <label>Name</label>
+            <input type="text" id="name" name="name" placeholder="Tom Cruise" required>
+            <br><br>
+
+            <label>Animal Type</label>
+            <input type="text" id="AnimalType" name="AnimalType" placeholder="Dog , Cat" required>
+            <br><br>
+
+            <label>Description</label>
+            <input type="text" id="Description" name="Description"
+                placeholder="A description of the animal that will help people recognise it" required>
+            <br><br>
+
+            <label>Location</label>
+            <input type="text" id="Location" name="Location" placeholder="The name of the area from which the animal vanished.
+				" required>
+            <br><br>
+
+            <button type="reset">Reset</button>
+            <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+
+    <form action="/delete" method="POST">
+        <fieldset>
+            <h3>Delete an Animal Details</h3>
+            <label>Animal ID</label>
+            <input type="text" id='empID' name="id" placeholder="1,2,3..." required>
+            <br><br>
+
+            <button type="reset">Reset</button>
+            <button type="submit">Submit</button>
+            <br><br><br>
+        </fieldset>
+    </form>
+
+
+    <script src="viewFoundLogic.js"></script>
+
+</body>
+
+</html>
