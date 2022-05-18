@@ -31,9 +31,49 @@ app.get('/', function(req,res){
   res.sendFile(path.join(__dirname,'./public/index.html'));
 });
 
+app.get("/api/reports", (req, res, next) => {
+  var sql = "select * from emp"
+  var params = []
+  db.all(sql, params, (err, rows) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      res.json({
+          "message":"success",
+          "data":rows
+      })
+    });
+});
+
+app.get('/reports', function(req,res){
+  res.sendFile(path.join(__dirname,'./public/viewfound.html'));
+});
+
+app.get('/reports/:id', function(req,res){
+  res.sendFile(path.join(__dirname,'./public/form.html'));
+});
+
 
 // Add
 app.post('/reports', function(req,res){
+  db.serialize(()=>{
+    db.run('INSERT INTO emp(id,name,AnimalType,Description,Location) VALUES(?,?,?,?,?)', [req.body.id, req.body.name,req.body.AnimalType,req.body.Description,req.body.Location], function(err) {
+      if (err) {
+        return console.log(err.message);
+      }
+      res.sendFile(path.join(__dirname,'./public/viewfound.html'));
+
+      console.log("New Animal Details has been added");
+      res.send("New Animal has been added into the database with ID = "+req.body.id+ " and Name = "+req.body.name);
+    });
+
+  });
+
+});
+
+// Add
+app.post('/api/reports', function(req,res){
   db.serialize(()=>{
     db.run('INSERT INTO emp(id,name,AnimalType,Description,Location) VALUES(?,?,?,?,?)', [req.body.id, req.body.name,req.body.AnimalType,req.body.Description,req.body.Location], function(err) {
       if (err) {
@@ -56,6 +96,25 @@ app.post('/reports/:id', function(req,res){
         res.send("Error encountered while displaying");
         return console.error(err.message);
       }
+      res.sendFile(path.join(__dirname,'./public/form.html'));
+     // res.status(200).json(row);
+     const Data = JSON.stringify(row);
+      res.status(200).json(row);
+     // res.send(` ID: ${row.ID},    Name: ${row.NAME},    AnimalType: ${row.AnimalType},   Description: ${row.Description},   Location: ${row.Location}`);
+      console.log("Entry displayed successfully");
+    });
+  });
+});
+
+// View
+app.get('/api/reports/:id', function(req,res){
+  db.serialize(()=>{
+    db.each('SELECT id ID, name NAME, AnimalType AnimalType, Description Description, Location Location FROM emp WHERE id =?', [req.body.id], function(err,row){     //db.each() is only one which is funtioning while reading data from the DB
+      if(err){
+        res.send("Error encountered while displaying");
+        return console.error(err.message);
+      }
+      res.sendFile(path.join(__dirname,'./public/form.html'));
      // res.status(200).json(row);
      const Data = JSON.stringify(row);
       res.status(200).json(row);
