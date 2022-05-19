@@ -73,14 +73,14 @@ app.post('/reports', function(req,res){
 });
 
 // Add
-app.post('/api/reports', function(req,res){
+app.post('/api/report', function(req,res){
   db.serialize(()=>{
     db.run('INSERT INTO emp(id,name,AnimalType,Description,Location) VALUES(?,?,?,?,?)', [req.body.id, req.body.name,req.body.AnimalType,req.body.Description,req.body.Location], function(err) {
       if (err) {
         return console.log(err.message);
       }
       console.log("New Animal Details has been added");
-      res.send("New Animal has been added into the database with ID = "+req.body.id+ " and Name = "+req.body.name);
+      res.send("New Animal has been added into the database ");
     });
 
   });
@@ -107,7 +107,7 @@ app.post('/reports/:id', function(req,res){
 });
 
 // View
-app.get('/api/reports/:id', function(req,res){
+app.get('/api/reports/', function(req,res){
   db.serialize(()=>{
     db.each('SELECT id ID, name NAME, AnimalType AnimalType, Description Description, Location Location FROM emp WHERE id =?', [req.body.id], function(err,row){     //db.each() is only one which is funtioning while reading data from the DB
       if(err){
@@ -184,6 +184,195 @@ app.get('/close', function(req,res){
   });
 
 });
+
+
+/////////
+// View
+app.get("/api/reports/87", (req, res, next) => {
+  //var value = id;
+  var sql = "select * from emp WHERE id = 87"
+  var params = []
+  db.all(sql, params, (err, rows) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      res.json({
+          "message":"success",
+          "data":rows
+      })
+    });
+});
+app.get("/api/reports/45", (req, res, next) => {
+  //var value = id;
+  var sql = "select * from emp WHERE id = 45"
+  var params = []
+  db.all(sql, params, (err, rows) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      res.json({
+          "message":"success",
+          "data":rows
+      })
+    });
+});
+////////
+app.get("/api/reports/43", (req, res, next) => {
+  //var value = id;
+  var sql = "select * from emp WHERE id = 43"
+  var params = []
+  db.all(sql, params, (err, rows) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      res.json({
+          "message":"success",
+          "data":rows
+      })
+    });
+});
+////////
+////////
+app.get("/api/reports/32", (req, res, next) => {
+  //var value = id;
+  var sql = "select * from emp WHERE id = 32"
+  var params = []
+  db.all(sql, params, (err, rows) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      res.json({
+          "message":"success",
+          "data":rows
+      })
+    });
+});
+////////
+////////
+app.get("/api/reports/46", (req, res, next) => {
+  //var value = id;
+  var sql = "select * from emp WHERE id = 46"
+  var params = []
+  db.all(sql, params, (err, rows) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      res.json({
+          "message":"success",
+          "data":rows
+      })
+    });
+});
+////////
+/////////
+// Delete
+app.delete("/api/report/87", (req, res, next) => {
+  //var value = id;
+  var sql = "delete from emp WHERE id = 87"
+  var params = []
+  db.all(sql, params, (err, rows) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      res.json({
+          "message":"success",
+          "data":rows
+      })
+    });
+});
+//
+// Delete
+app.delete("/api/report/45", (req, res, next) => {
+  //var value = id;
+  var sql = "delete from emp WHERE id = 45"
+  var params = []
+  db.all(sql, params, (err, rows) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      res.json({
+          "message":"success",
+          "data":rows
+      })
+    });
+});
+//
+// Delete
+app.delete("/api/report/43", (req, res, next) => {
+  //var value = id;
+  var sql = "delete from emp WHERE id = 43"
+  var params = []
+  db.all(sql, params, (err, rows) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      res.json({
+          "message":"success",
+          "data":rows
+      })
+    });
+});
+//
+//
+// Delete
+app.delete("/api/report/32", (req, res, next) => {
+  //var value = id;
+  var sql = "delete from emp WHERE id = 32"
+  var params = []
+  db.all(sql, params, (err, rows) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      res.json({
+          "message":"success",
+          "data":rows
+      })
+    });
+});
+//
+// Delete
+app.delete("/api/report/46", (req, res, next) => {
+  //var value = id;
+  var sql = "delete from emp WHERE id = 46"
+  var params = []
+  db.all(sql, params, (err, rows) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      res.json({
+          "message":"success",
+          "data":rows
+      })
+    });
+});
+//
+// Upadate
+app.put("/api/report/2345", (req, res, next) => {
+  //var value = id;
+  var sql = "delete from emp WHERE id = 2345"
+  var params = []
+  db.all(sql, params, (err, rows) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      res.json({
+          "message":"success",
+          "data":rows
+      })
+    });
+});
+////////
 
 
 
